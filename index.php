@@ -20,9 +20,10 @@
 		</header>
 
 		<div id="content">
-
+			<div id="place"></div>
 		</div>
 
+		<script src="keys.js"></script>
 		<script src="js/app.js"></script>
 	</body>
 </html>

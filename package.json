@@ -1,0 +1,16 @@
+{
+  "name": "check-in-to",
+  "version": "0.0.1",
+  "description": "Check-in web app",
+  "main": "js/app.js",
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikko Heikkinen/biomi.org",
+  "license": "ISC"
+}
