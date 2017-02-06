@@ -12,7 +12,6 @@
 	    <script src="node_modules/jquery/dist/jquery.min.js"></script>
 	    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 
-		</script>
 	</head>
 	<body>
 		<header>
@@ -23,6 +22,12 @@
 			<div id="place"></div>
 		</div>
 
+        <script>
+        <?php
+        echo "const spareId = '" . sha1(uniqid("", true)) . "';\n";
+        echo "const ipAddress = '" . $_SERVER['REMOTE_ADDR'] . "'\n";
+        ?>
+        </script>
 		<script src="keys.js"></script>
 		<script src="js/app.js"></script>
 	</body>

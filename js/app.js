@@ -1,18 +1,32 @@
-
 console.log(document.location);
 
 let pathname = document.location.pathname;
 let pathnamePieces = pathname.split("/")
 let placeId = pathnamePieces[2];
 
-// TODO: Get user id from localstorage
-// TODO: Create user id
-// TODO: Set user id to localstorage
-// TODO: Send user id to API, and handle it there
+// TODO: require scripts by building (Webstorm or other build tool?)
 
+let userId;
+if (storageAvailable('localStorage')) {
+    if (undefined != localStorage.getItem("userId")) {
+        userId = localStorage.getItem("userId");
+    }
+    else {
+        localStorage.setItem("userId", spareId);
+        userId = spareId;
+    }
+}
+else {
+    userId = "";
+}
+
+console.log("userId: " + userId);
+
+
+// Start with getting place data
 $.ajax({
     method: "GET",
-    url: api_url + "?action=addcheckin&placeid=" + placeId
+    url: api_url + "?action=addcheckin&placeid=" + placeId + "&userid=" + userId
 }).done(function( msg ) {
     let msgString = JSON.stringify(msg);
     console.log("Response from check-in-api: " + msgString);
@@ -35,6 +49,7 @@ function setPlaceMessage(msg) {
     $("#place").html(html);
 }
 
+// Get observations
 function setObservations(lat, lon) {
 
     // TODO: Create bbox
@@ -53,3 +68,26 @@ function setObservations(lat, lon) {
     });
 }
 
+// Detects whether localStorage is both supported and available
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return false;
+    }
+}
+
+/*
+if (storageAvailable('localStorage')) {
+ // Yippee! We can use localStorage awesomeness
+}
+else {
+ // Too bad, no localStorage for us
+}
+*/
