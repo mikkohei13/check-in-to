@@ -41,29 +41,39 @@ $.ajax({
 });
 
 function setErrorMessage(msg) {
-    $("#place").html(msg.errorUser);
+    $("header").html(msg.errorUser);
 }
 
 function setPlaceMessage(msg) {
-    let html = "<h1>" + msg.place.name + "</h1><p id='coord'>" + msg.place.lat + ", " + msg.place.lon + "</p>";
-    $("#place").html(html);
+    let html = "<h1>" + msg.place.name + "</h1>";
+    $("header").html(html);
 }
 
 // Get observations
 function setObservations(lat, lon) {
 
-    // TODO: Create bbox
-    let boundingBox = "...";
+    let boundingBoxArr = [];
+        boundingBoxArr.push(parseFloat(lat) - 0.005);
+        boundingBoxArr.push(parseFloat(lat) + 0.005);
+        boundingBoxArr.push(parseFloat(lon) - 0.010);
+        boundingBoxArr.push(parseFloat(lon) + 0.010);
+    let boundingBox = boundingBoxArr.join("%3A");
 
-    // TODO: Get aggregated data
+    // Get aggregated observation data
     $.ajax({
         method: "GET",
-        url: "https://api.laji.fi/v0/warehouse/query/aggregate?aggregateBy=unit.linkings.taxon.nameFinnish&geoJSON=false&onlyCount=true&pageSize=50&page=1&includeNonValidTaxa=false&time=2007%2F2017&coordinates=60.17%3A60.19%3A24.56%3A24.58%3AWGS84&coordinateAccuracyMax=1001&access_token=" + lajifi_access_token
+        url: "https://api.laji.fi/v0/warehouse/query/aggregate?aggregateBy=unit.linkings.taxon.nameFinnish&geoJSON=false&onlyCount=true&pageSize=50&page=1&includeNonValidTaxa=false&time=2007%2F2017&coordinates=" + boundingBox + "%3AWGS84&coordinateAccuracyMax=1001&access_token=" + lajifi_access_token
     }).done(function( msg ) {
         let msgString = JSON.stringify(msg);
         console.log("Response from api.laji.fi: " + msgString);
 
+        let html = "";
         // TODO: Generate html table and update on page
+        msg.results.forEach(function(observation) {
+            html += "<p>" + observation.aggregateBy["unit.linkings.taxon.nameFinnish"] + ": " + observation.count + "</p>";
+        });
+
+        $("#observations").html(html);
 
     });
 }

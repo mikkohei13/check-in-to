@@ -15,11 +15,10 @@
 	</head>
 	<body>
 		<header>
-			<h1>Check-in to</h1>
 		</header>
 
 		<div id="content">
-			<div id="place"></div>
+			<div id="observations"></div>
 		</div>
 
         <script>
