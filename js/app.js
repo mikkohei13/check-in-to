@@ -6,6 +6,7 @@ let placeId = pathnamePieces[2];
 
 // TODO: require scripts by building (Webstorm or other build tool?)
 
+// Get/ser userid
 let userId;
 if (storageAvailable('localStorage')) {
     if (undefined != localStorage.getItem("userId")) {
@@ -19,7 +20,6 @@ if (storageAvailable('localStorage')) {
 else {
     userId = "";
 }
-
 console.log("userId: " + userId);
 
 
@@ -41,16 +41,19 @@ $.ajax({
 });
 
 function setErrorMessage(msg) {
-    $("header").html(msg.errorUser);
+    $("header #status").html(msg.errorUser);
 }
 
 function setPlaceMessage(msg) {
-    let html = "<h1>" + msg.place.name + "</h1>";
-    $("header").html(html);
+    $("header #status").html("");
+    $("header h1").html(msg.place.name);
+    $("#description").html(msg.place.description);
+    $("#checkInStatus").html(msg.status);
 }
 
 // Get observations
 function setObservations(lat, lon) {
+    $("#observationContainer").html("<span class='status'>Havaintoja haetaan...</span>");
 
     let boundingBoxArr = [];
         boundingBoxArr.push(parseFloat(lat) - 0.005);
@@ -68,15 +71,20 @@ function setObservations(lat, lon) {
         console.log("Response from api.laji.fi: " + msgString);
 
         let html = "";
-        // TODO: Generate html table and update on page
+        let firstItemSuffix = " havaintoa";
+        // TODO: Templating
         msg.results.forEach(function(observation) {
-            html += "<p>" + observation.aggregateBy["unit.linkings.taxon.nameFinnish"] + ": " + observation.count + "</p>";
+            html += "<li><strong>" + observation.aggregateBy["unit.linkings.taxon.nameFinnish"] + "</strong>: " + observation.count + firstItemSuffix + "</li>";
+            firstItemSuffix = "";
         });
 
-        $("#observations").html(html);
+        html = "<p class='intro'>Viimeisen kymmenen vuoden aikana lähiseudulla on havaittu mm:</p><ol id='observationList'>" + html + "</ol><p class='epilog'>Havainnot tulevat Suomen Lajitietokeskuksen tietokannasta noin 500 metrin sääteeltä tästä paikasta. Havainnot voivat sisältää virheitä.</p>";
+
+        $("#observationContainer").html(html);
 
     });
 }
+
 
 // Detects whether localStorage is both supported and available
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API

@@ -1,0 +1,78 @@
+/*
+green dark	131	175	0
+green light	194	207	0
+yellow		255	255	36
+blue		0	106	167
+purple		34	7	117
+red		155	14	78
+*/
+
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 116%;
+}
+#all {
+    border-top: 5px solid green;
+    border-top: 5px solid rgba(131, 175, 0, 1); /* dark green */
+}
+
+h1 {
+    font-family: Merriweather, serif;
+    margin: 0;
+}
+
+h2, h3, h4 {
+    font-family: Merriweather, serif;
+    margin: 0.2em 0 0.2em 0;
+}
+
+header,
+#description,
+#observations,
+#footer {
+    padding: 10px;
+}
+
+#logo {
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.status {
+    background-color: rgba(34, 7, 117, 1); /* purple */
+    color: #fff;
+    padding: 0.3em;
+    margin: 0.4em 0;
+    display: block;
+    clear: both;
+    font-size: 120%;
+    border-radius: 5px;
+}
+
+#description {
+    clear: both;
+}
+
+#observations {
+    margin-top: 0.5em;
+    background-color: rgba(194, 207, 0, 0.5); /* light green */
+}
+
+#observations ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#observations ol li {
+    margin-top: 0.1em;
+}
