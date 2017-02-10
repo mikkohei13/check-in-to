@@ -1,0 +1,7 @@
+
+green dark	131	175	0
+green light	194	207	0
+yellow		255	255	36
+blue		0	106	167
+purple		34	7	117
+red		155	14	78
