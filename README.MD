@@ -12,9 +12,13 @@ Fonts:
 
 
 TODO:
+- Check handling of checkins without userid on the js app / with IP userid on the API
 - Design
     - Footer
+- Privacy policy
 - Monitoring API
+    - checkins per tower DONE
+    - checkins per user DONE
 - Dev & Production versions, with separate databases
 - Testing (API)
 - Print plaques
