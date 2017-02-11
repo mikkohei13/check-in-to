@@ -13,13 +13,18 @@ Fonts:
 
 TODO:
 - Design
+    - Footer
 - Monitoring API
 - Dev & Production versions, with separate databases
 - Testing (API)
-- Plaques
+- Print plaques
 
 SOMEDAY:
 - Track code (to qrcode)
+- Bird atlas birds
+- Observations grouped by taxon group
+- UI to edit places
+- Automatic plaque generation (jpg, png?, 300dpi)
 
 Places, 1st round:
 - Fiskarsinmäki
