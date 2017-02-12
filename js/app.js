@@ -1,8 +1,11 @@
 console.log(document.location);
 
 let pathname = document.location.pathname;
-let pathnamePieces = pathname.split("/")
-let placeId = pathnamePieces[2];
+let pathnamePieces = pathname.split("/");
+let fullId = pathnamePieces[2];
+let fullIdPieces = fullId.split("-")
+let placeId = fullIdPieces[0];
+let trackerId = fullIdPieces[1];
 
 // TODO: require scripts by building (Webstorm or other build tool?)
 
@@ -26,7 +29,7 @@ console.log("userId: " + userId);
 // Start with getting place data
 $.ajax({
     method: "GET",
-    url: api_url + "?action=addcheckin&placeid=" + placeId + "&userid=" + userId
+    url: api_url + "?action=addcheckin&placeid=" + placeId + "&userid=" + userId + "&trackerid=" + trackerId
 }).done(function( msg ) {
     // Note that done() will only be called when API doesn't return http status code indicating an error. E.g. code 400 would call fail(). Currently the API always responds with http status code 200, and includes the "real" status code in the status-field.
 
