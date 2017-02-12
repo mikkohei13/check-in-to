@@ -1,7 +1,6 @@
 Check-in-to
 ====================
 
-
 User id logic:
 - Frontend:
     - Generate random id with PHP.
@@ -12,7 +11,16 @@ User id logic:
     - Is userid is empty, use IP address prepended with "IP-" as the userid
     - Check that user has not checked in too short time ago. If not, check in with the userid.
     - Always return place data, together with information about the check-in.
-    
+   
+Current setup:
+- Development
+    - App: Turso
+    - API: biomi.org
+    - DB: biomi.org
+- Production
+    - App: biomi.org
+    - API: creativitygrowing
+    - DB: creativitygrowing
     
 TODO
 ----
@@ -23,6 +31,8 @@ TODO
 - Testing (API)
     - Delete checkin by checkinid to the API?
 - Design & print plaques, first by hand & printer (10x25 cm)
+- Make sure .htaccess doesn't redirect to https at biomi.org
+- Risk: Production app's keys.js will be overridden by development keys, if using Winscp sync. How to avoid?
 
 Places, 1st round:
 - Fiskarsinmäki
