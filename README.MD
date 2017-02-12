@@ -21,7 +21,7 @@ Current setup:
     - App: biomi.org
     - API: creativitygrowing
     - DB: creativitygrowing
-    
+
 TODO
 ----
 
