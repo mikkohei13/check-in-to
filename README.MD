@@ -23,8 +23,6 @@ TODO
 - Testing (API)
     - Delete checkin by checkinid to the API?
 - Design & print plaques, first by hand & printer (10x25 cm)
-- Log all API requests (esp. 429)
-- Filter out bots? Forbid bots on the header?
 
 Places, 1st round:
 - Fiskarsinmäki

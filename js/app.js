@@ -28,6 +28,8 @@ $.ajax({
     method: "GET",
     url: api_url + "?action=addcheckin&placeid=" + placeId + "&userid=" + userId
 }).done(function( msg ) {
+    // Note that done() will only be called when API doesn't return http status code indicating an error. E.g. code 400 would call fail(). Currently the API always responds with http status code 200, and includes the "real" status code in the status-field.
+
     let msgString = JSON.stringify(msg);
     console.log("Response from check-in-api: " + msgString);
 
@@ -48,7 +50,7 @@ function setPlaceMessage(msg) {
     $("header #status").html("");
     $("header h1").html(msg.place.name);
     $("#description").html(msg.place.description);
-    $("#checkInStatus").html(msg.status);
+    $("#checkInStatus p").html(msg.status);
 }
 
 // Get observations
