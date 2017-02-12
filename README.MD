@@ -32,7 +32,10 @@ TODO
     - Delete checkin by checkinid to the API?
 - Design & print plaques, first by hand & printer (10x25 cm)
 - Make sure .htaccess doesn't redirect to https at biomi.org
-- Risk: Production app's keys.js will be overridden by development keys, if using Winscp sync. How to avoid?
+- Risks: if using Winscp sync,
+    - Production app's keys.js will be overridden by development keys, 
+    - Production .htaccess will be overridden by development file
+
 
 Places, 1st round:
 - Fiskarsinmäki
