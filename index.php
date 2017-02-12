@@ -41,7 +41,9 @@ $cacheBuster = "?" . rand(0, 100000);
                     <br />
                     biomi.org
                 </a>
-                <div id="checkInStatus"></div>
+                <!-- Placeholder for future use. Currently this site doesn't collect personal information, nor use cookies.' -->
+                <!-- <p id="privacy"><a href="privacy.txt">Tietosuojaseloste</a></p> -->
+                <p id="checkInStatus"></p>
             </div>
 
             <script>

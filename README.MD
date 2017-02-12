@@ -19,14 +19,11 @@ TODO
 
 - Design
     - Readability on a phone
-    - Footer
-        - biomi logo
-        - Privacy policy
 - Dev & Production versions, with separate databases
 - Testing (API)
     - Delete checkin by checkinid to the API?
 - Design & print plaques, first by hand & printer (10x25 cm)
-- Log all requests (esp. 429)
+- Log all API requests (esp. 429)
 - Filter out bots? Forbid bots on the header?
 
 Places, 1st round:
