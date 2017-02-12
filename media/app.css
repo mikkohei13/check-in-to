@@ -81,3 +81,18 @@ h1 {
 #observations ol li {
     margin-top: 0.1em;
 }
+
+#footer {
+    text-align: center;
+    padding-top: 2em;
+}
+#biomi {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgba(0, 106, 167, 1); /* blue */
+    color: #0d457f; /* biomi blue */
+}
+#checkInStatus {
+    color: #ccc;
+    font-size: 80%;
+}

@@ -36,7 +36,12 @@ $cacheBuster = "?" . rand(0, 100000);
             </div>
 
             <div id="footer">
-            <div id="checkInStatus"></div>
+                <a href="https://www.biomi.org/" id="biomi">
+                    <img src="media/biomi-kotka.png" alt="" />
+                    <br />
+                    biomi.org
+                </a>
+                <div id="checkInStatus"></div>
             </div>
 
             <script>
