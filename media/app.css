@@ -9,7 +9,7 @@ red		155	14	78
 
 
 body {
-    font-family: Lato, Helvetica, sans-serif;
+    font-family: "Nunito Sans", Helvetica, sans-serif;
     padding: 0;
     margin: 0;
     font-size: 116%;
@@ -55,12 +55,10 @@ h1 {
 .status {
     background-color: rgba(34, 7, 117, 1); /* purple */
     color: #fff;
-    padding: 0.3em;
-    margin: 0.4em 0;
+    padding: 10px;
+    margin: 0.5em -10px;
     display: block;
     clear: both;
-    font-size: 120%;
-    border-radius: 5px;
 }
 
 #description {
@@ -69,7 +67,15 @@ h1 {
 
 #observations {
     margin-top: 0.5em;
-    background-color: rgba(194, 207, 0, 0.5); /* light green */
+    background-color: rgba(194, 207, 0, 0.2); /* light green */
+}
+
+strong {
+    font-weight: 600;
+}
+
+#observations h3 {
+    color: rgba(131, 175, 0, 1); /* dark green */
 }
 
 #observations ol {
@@ -93,8 +99,8 @@ h1 {
 
 #biomi {
     font-weight: bold;
-    color: rgba(0, 106, 167, 1); /* blue */
     color: #0d457f; /* biomi blue */
+    font-size: 110%;
 }
 
 #privacy, #checkInStatus {
