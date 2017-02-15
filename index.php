@@ -32,6 +32,7 @@ $cacheBuster = "?" . rand(0, 100000);
                 <div id="observations">
                     <h3>Havaintoja</h3>
                     <div id='observationContainer'></div>
+                    <div id='observationContainerLatest'></div>
                 </div>
             </div>
 
@@ -61,7 +62,6 @@ $cacheBuster = "?" . rand(0, 100000);
             echo "const ipAddress = '" . $_SERVER['REMOTE_ADDR'] . "'\n";
             ?>
             </script>
-            <script src="keys.js<?php echo $cacheBuster; ?>"></script>
             <script src="js/app.js<?php echo $cacheBuster; ?>"></script>
         </div>
 	</body>

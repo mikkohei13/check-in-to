@@ -73,7 +73,7 @@ function setObservations(lat, lon) {
         url: "https://api.laji.fi/v0/warehouse/query/aggregate?aggregateBy=unit.linkings.taxon.nameFinnish&geoJSON=false&onlyCount=true&pageSize=50&page=1&includeNonValidTaxa=false&time=2007%2F2017&coordinates=" + boundingBox + "%3AWGS84&coordinateAccuracyMax=1001&access_token=" + lajifi_access_token
     }).done(function( msg ) {
         let msgString = JSON.stringify(msg);
-        console.log("Response from api.laji.fi: " + msgString);
+//        console.log("Response from api.laji.fi: " + msgString);
 
         let html = "";
         let firstItemSuffix = " havaintoa";
@@ -83,11 +83,40 @@ function setObservations(lat, lon) {
             firstItemSuffix = "";
         });
 
-        html = "<p class='intro'>Viimeisen kymmenen vuoden aikana lähiseudulla on havaittu mm:</p><ol id='observationList'>" + html + "</ol><p class='epilog'>Havainnot tulevat Suomen Lajitietokeskuksen tietokannasta noin 500 metrin sääteeltä tästä paikasta. Havainnot voivat sisältää virheitä.</p>";
+        html = "<h4>Yhteenveto havainnoista</h4></h4><p class='intro'>Viimeisen kymmenen vuoden aikana lähiseudulla on havaittu mm:</p><ol id='observationList'>" + html + "</ol>";
 
         $("#observationContainer").html(html);
+    });
+
+
+    // Get latest observation data
+    $.ajax({
+        method: "GET",
+        url: "https://api.laji.fi/v0/warehouse/query/list?selected=document.documentId%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.interpretations.finnishMunicipality%2Cgathering.locality%2Cgathering.municipality%2Cgathering.team%2Cunit.abundanceString%2Cunit.linkings.taxon.scientificName%2Cunit.linkings.taxon.vernacularName&orderBy=gathering.eventDate.begin DESC&pageSize=10&page=1&coordinates=" + boundingBox + "%3AWGS84&coordinateAccuracyMax=1000&access_token=" + lajifi_access_token
+    }).done(function( msg ) {
+        let msgString = JSON.stringify(msg);
+//        console.log("Response from api.laji.fi: " + msgString);
+
+        let html = "";
+        // TODO: Templating
+
+        msg.results.forEach(function(obs) {
+            console.log(JSON.stringify(obs.unit));
+            let datePieces = obs.gathering.eventDate.begin.split("-");
+            let dateString = datePieces[2] + "." + datePieces[1] + "." + datePieces[0];
+            html += "<li><strong>" + obs.unit.linkings.taxon.vernacularName.fi + "</strong>, " + obs.unit.abundanceString + " (" + obs.gathering.locality + " " + dateString + ")</li>";
+        });
+
+        html = "<h4>Uusimpia havaintoja</h4><p class='intro'>mm.:</p><ol id='observationListLatest'>" + html + "</ol><p class='epilog'>Havainnot tulevat <a href='https://beta.laji.fi/'>Suomen Lajitietokeskuksen</a> tietokannasta noin 500 metrin sääteeltä tästä paikasta. Havainnot voivat sisältää virheitä. Myös <a href='http://tiira.fi/'>Tiira-lintutietopalvelussa</a> on paljon tuoreita lintuavaintoja, jotka eivät näy Lajitietokeskuksen kautta.</p>";
+
+        $("#observationContainerLatest").html(html);
 
     });
+
+
+
+
+
 }
 
 
@@ -105,12 +134,3 @@ function storageAvailable(type) {
         return false;
     }
 }
-
-/*
-if (storageAvailable('localStorage')) {
- // Yippee! We can use localStorage awesomeness
-}
-else {
- // Too bad, no localStorage for us
-}
-*/
