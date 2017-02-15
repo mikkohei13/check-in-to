@@ -58,7 +58,7 @@ function setPlaceMessage(msg) {
 
 // Get observations
 function setObservations(lat, lon) {
-    $("#observationContainer").html("<span class='status'>Havaintoja haetaan...</span>");
+    $("#observationsLatest").html("<span class='status'>Havaintoja haetaan...</span>");
 
     let boundingBoxArr = [];
         boundingBoxArr.push(parseFloat(lat) - 0.005);
@@ -83,9 +83,9 @@ function setObservations(lat, lon) {
             firstItemSuffix = "";
         });
 
-        html = "<h4>Yhteenveto havainnoista</h4></h4><p class='intro'>Viimeisen kymmenen vuoden aikana lähiseudulla on havaittu mm:</p><ol id='observationList'>" + html + "</ol>";
+        html = "<h4>Yhteenveto havainnoista</h4></h4><p class='intro'>Viimeisen kymmenen vuoden aikana lähiseudulla on havaittu mm:</p><ol id='observationList'>" + html + "</ol><p class='epilog'>Havainnot tulevat <a href='https://beta.laji.fi/'>Suomen Lajitietokeskuksen</a> tietokannasta noin 500 metrin sääteeltä tästä paikasta. Havainnot voivat sisältää virheitä. Myös <a href='http://tiira.fi/'>Tiira-lintutietopalvelussa</a> on paljon tuoreita lintuavaintoja, jotka eivät näy Lajitietokeskuksen kautta.</p>";
 
-        $("#observationContainer").html(html);
+        $("#observationsAggregate").html(html);
     });
 
 
@@ -107,9 +107,9 @@ function setObservations(lat, lon) {
             html += "<li><strong>" + obs.unit.linkings.taxon.vernacularName.fi + "</strong>, " + obs.unit.abundanceString + " (" + obs.gathering.locality + " " + dateString + ")</li>";
         });
 
-        html = "<h4>Uusimpia havaintoja</h4><p class='intro'>mm.:</p><ol id='observationListLatest'>" + html + "</ol><p class='epilog'>Havainnot tulevat <a href='https://beta.laji.fi/'>Suomen Lajitietokeskuksen</a> tietokannasta noin 500 metrin sääteeltä tästä paikasta. Havainnot voivat sisältää virheitä. Myös <a href='http://tiira.fi/'>Tiira-lintutietopalvelussa</a> on paljon tuoreita lintuavaintoja, jotka eivät näy Lajitietokeskuksen kautta.</p>";
+        html = "<h4>Uusimpia havaintoja</h4><p class='intro'>Lähiseudulla on havaittu mm:</p><ol id='observationListLatest'>" + html + "</ol>";
 
-        $("#observationContainerLatest").html(html);
+        $("#observationsLatest").html(html);
 
     });
 

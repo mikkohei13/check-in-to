@@ -119,3 +119,8 @@ strong {
 #privacy a {
     color: #777;
 }
+
+#mymap {
+    width: 100%;
+    height: 500px;
+}

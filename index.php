@@ -31,8 +31,8 @@ $cacheBuster = "?" . rand(0, 100000);
                 <div id="description"></div>
                 <div id="observations">
                     <h3>Havaintoja</h3>
-                    <div id='observationContainer'></div>
-                    <div id='observationContainerLatest'></div>
+                    <div id='observationsLatest'></div>
+                    <div id='observationsAggregate'></div>
                 </div>
             </div>
 
