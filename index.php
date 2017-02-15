@@ -6,11 +6,11 @@ $cacheBuster = "?" . rand(0, 100000);
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Check-in</title>
+		<title>Lintutorni</title>
 		<link rel="shortcut icon" href="favicon.ico">
 
 		<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600" rel="stylesheet">
 		<link rel="stylesheet" href="media/app.css<?php echo $cacheBuster; ?>" media="all" />
 
 	    <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -48,6 +48,15 @@ $cacheBuster = "?" . rand(0, 100000);
 
             <script>
             <?php
+            require_once "keys.php";
+            if ($_SERVER['HTTP_HOST'] == $devHost) {
+                echo "const api_url = '" . $keys['dev']["apiUrl"] . "';\n";
+            }
+            else {
+                echo "const api_url = '" . $keys['production']["apiUrl"] . "';\n";
+            }
+            echo "const lajifi_access_token = '" . $lajifiAccessToken . "';\n";
+
             echo "const spareId = '" . sha1(uniqid("", true)) . "';\n";
             echo "const ipAddress = '" . $_SERVER['REMOTE_ADDR'] . "'\n";
             ?>

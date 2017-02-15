@@ -25,16 +25,21 @@ Current setup:
 TODO
 ----
 
-- Design
-    - Readability on a phone
-- Dev & Production versions, with separate databases
+MUST:
+- Dev & Production versions, with separate databases.
+    - Auto-select the api and db (production = default) -> similar code for test & production
 - Testing (API)
     - Delete checkin by checkinid to the API?
 - Design & print plaques, first by hand & printer (10x25 cm)
 - Make sure .htaccess doesn't redirect to https at biomi.org
-- Risks: if using Winscp sync,
+
+- Mitigate risks: if using Winscp sync,
     - Production app's keys.js will be overridden by development keys, 
     - Production .htaccess will be overridden by development file
+
+SHOULD/NICE:
+- Recent observations   
+- Local happenings
 
 
 Places, 1st round:

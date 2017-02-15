@@ -1,9 +1,6 @@
 
 # Private files
-keys.js
-keys-DEV.js
-keys-PRODUCTION.js
-
+keys.php
 
 # Dev
 # =========================
