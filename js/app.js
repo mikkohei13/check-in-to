@@ -104,13 +104,20 @@ function setObservations(lat, lon) {
             console.log(JSON.stringify(obs.unit));
             let datePieces = obs.gathering.eventDate.begin.split("-");
             let dateString = datePieces[2] + "." + datePieces[1] + "." + datePieces[0];
-            html += "<li><strong>" + obs.unit.linkings.taxon.vernacularName.fi + "</strong>, " + obs.unit.abundanceString + " (" + obs.gathering.locality + " " + dateString + ")</li>";
+            let abundance = obs.unit.abundanceString;
+            if (abundance == undefined) {
+                abundance = "";
+            }
+            else {
+                abundance = ", " + abundance;
+            }
+
+            html += "<li><strong>" + obs.unit.linkings.taxon.vernacularName.fi + "</strong>" + abundance + " <span>(" + obs.gathering.locality + " " + dateString + ")</span></li>";
         });
 
         html = "<h4>Uusimpia havaintoja</h4><p class='intro'>Lähiseudulla on havaittu mm:</p><ol id='observationListLatest'>" + html + "</ol>";
 
         $("#observationsLatest").html(html);
-
     });
 
 
