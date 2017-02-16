@@ -52,6 +52,7 @@ function setErrorMessage(msg) {
 function setPlaceMessage(msg) {
     $("header #status").html("");
     $("header h1").html(msg.place.name);
+    $("title").html(msg.place.name);
     $("#description").html(msg.place.description);
     $("#checkInStatus p").html(msg.status);
 }
