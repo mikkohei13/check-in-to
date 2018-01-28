@@ -26,36 +26,16 @@ TODO
 ----
 
 MUST:
-- Testing (API)
-    - Delete checkin by checkinid to the API?
-- Design & print plaques, first by hand & printer (10x25 cm)
-- Make sure .htaccess doesn't redirect to https at biomi.org
 
 SHOULD/NICE:
-- Recent observations   
+- Analyze sub-location data
+
+SOMEDAY/MAYBE:
+
 - Local happenings
-
-
-Places, 1st round:
-- Fiskarsinmäki
-- Kaitalahti
-- Suomenoja x2
-- Laajalahti x2
-- Matalajärvi
-- Nupurinjärvi
-- Haltia?
-- Pitkäjärvi?
-- Lauttasaari?
-- Saltfjärden?
-- Morsfjärden?
-
-SOMEDAY
--------
-
-- Don't log checkin if doesn't come from close to the place (+-3 km?)
+- Don't log checkin if location is not close to the place (+-3 km?)
 - Tracking code to track several plaques on single location (to QRcode) -> data on wether people use QRcode or write URL by hand, know where to place the plaque 
-- Bird atlas birds
-- Recent observations from laji.fi
+- Bird atlas data
 - Observations grouped by taxon group?
 - UI to edit places (Distributed, Google Docs? Validation required.)
 - Automatic plaque generation (jpg, png?, 300dpi)
